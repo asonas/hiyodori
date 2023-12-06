@@ -1,7 +1,7 @@
 # Hiyodori
 
 
-Hiyodoriはunfurlを利用してdocbase.ioの記事をSlack上で展開するSlackAppです。
+Hiyodoriはunfurlを利用してdocbase.ioの記事をSlack上で展開するためのアプリケーションです。
 
 また、このリポジトリのコードはKujakuの実装を参考にしています。
 https://github.com/FromAtom/Kujaku
