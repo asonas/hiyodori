@@ -1,12 +1,20 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.8.5)
+      public_suffix (>= 2.0.2, < 6.0)
+    crack (0.4.5)
+      rexml
+    hashdiff (1.0.1)
+    minitest (5.20.0)
     multi_json (1.15.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
+    public_suffix (5.0.4)
     rack (2.2.8)
     rack-protection (3.1.0)
       rack (~> 2.2, >= 2.2.4)
+    rexml (3.2.6)
     ruby2_keywords (0.0.5)
     sinatra (3.1.0)
       mustermann (~> 3.0)
@@ -20,6 +28,10 @@ GEM
       sinatra (= 3.1.0)
       tilt (~> 2.0)
     tilt (2.3.0)
+    webmock (3.19.1)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     webrick (1.8.1)
 
 PLATFORMS
@@ -27,8 +39,10 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  minitest
   sinatra
   sinatra-contrib
+  webmock
   webrick
 
 BUNDLED WITH

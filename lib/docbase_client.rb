@@ -8,6 +8,8 @@ class DocbaseClient
   DOCBASE_MAX_ARTICLE_LINES = ENV.fetch('ESA_MAX_ARTICLE_LINES', '10').to_i
   DOCBASE_MAX_COMMENT_LINES = ENV.fetch('ESA_MAX_COMMENT_LINES', '10').to_i
 
+  DESIRED_SCOPE = ENV['DESIRED_SCOPE']
+
   def initialize
     @http = Net::HTTP.new('api.docbase.io', 443)
     @http.use_ssl = true
@@ -32,6 +34,10 @@ class DocbaseClient
       footer: footer,
       ts: Time.parse(post['updated_at']).to_i
     }
+
+    if !DESIRED_SCOPE.nil? && post['scope'] == DESIRED_SCOPE
+      payload = {}
+    end
 
     return payload
   end
