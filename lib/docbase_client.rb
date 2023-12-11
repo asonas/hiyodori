@@ -5,10 +5,10 @@ require 'time'
 class DocbaseClient
   DOCBASE_ACCESS_TOKEN = ENV['DOCBASE_ACCESS_TOKEN']
 
-  DOCBASE_MAX_ARTICLE_LINES = ENV.fetch('ESA_MAX_ARTICLE_LINES', '10').to_i
-  DOCBASE_MAX_COMMENT_LINES = ENV.fetch('ESA_MAX_COMMENT_LINES', '10').to_i
+  DOCBASE_MAX_ARTICLE_LINES = ENV.fetch('DOCBASE_MAX_ARTICLE_LINES', '10').to_i
+  DOCBASE_MAX_COMMENT_LINES = ENV.fetch('DOCBASE_MAX_COMMENT_LINES', '10').to_i
 
-  DESIRED_SCOPE = ENV['DESIRED_SCOPE']
+  DESIRED_SCOPE = ENV['DESIRED_SCOPE'] || ''
 
   def initialize
     @http = Net::HTTP.new('api.docbase.io', 443)
@@ -35,7 +35,7 @@ class DocbaseClient
       ts: Time.parse(post['updated_at']).to_i
     }
 
-    if !DESIRED_SCOPE.nil? && post['scope'] == DESIRED_SCOPE
+    if !DESIRED_SCOPE.empty? && DESIRED_SCOPE == post['scope']
       payload = {}
     end
 
